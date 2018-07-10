@@ -1,0 +1,6 @@
+dist/
+eslint.config.json
+gulpfile_compare.js
+node_modules/
+package-lock.json
+ps-authors/
