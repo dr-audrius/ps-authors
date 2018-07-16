@@ -1,52 +1,14 @@
-$ = jQuery = require('jquery');
+"use strict";
+
 var React = require('react');
-var Home = require('./components/homePage');
-var About = require('./components/about/aboutPage');
-var Header = require('./components/common/header');
-var Authors = require('./components/authors/authorPage');
+var Router = require('react-router');
+var routes = require('./routes');
 
-var Test = require('./testPage');
+var Test1 = require('./testPage');
 
 
+Router.run(routes, function(Handler) {
+	React.render(<Handler/>, document.getElementById('app'));
+});
 
-//React.render(<Test />, document.getElementById('myTest'));
-
-//React.render(<Author />, document.getElementById('myAuthors'));
-
-// var = App = React.createClass
-// React.render(<Home />, document.getElementById('app'));
-(function(win) {
-    "use strict";
-	var App = React.createClass({
-		render: function() {
-			var Child;
-
-			switch(this.props.route) {
-				case 'about': Child = About; break;
-				case 'authors': Child = Authors; break;
-				case 'test': Child = Test; break;
-				default: Child = Home;
-			}
-
-			return (
-				<div>
-					<Header/>
-					<Child/>
-					
-				</div>
-			);
-
-		}
-	});
-
-	function render() {
-		var route = win.location.hash.substr(1);
-		React.render(<App route={route} />, document.getElementById('app'));
-	}
-
-	win.addEventListener('hashchange', render);
-	render();
-
-})(window);
-
-
+React.render(<Test1/>, document.getElementById('myTest'));
